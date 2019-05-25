@@ -61,11 +61,9 @@ static CIKernel *_SKPTUncoverTransitionFilterKernel = nil;
         nil];
 }
 
-- (CGRect)regionOf:(int)sampler destRect:(CGRect)R userInfo:(NSArray *)array {
+- (CGRect)regionOf:(int)sampler destRect:(CGRect)R userInfo:(NSNumber *)offset {
     if (sampler == 0) {
-        CGRect extent = [[array objectAtIndex:0] extent];
-        float offset = [[array objectAtIndex:1] floatValue];
-        R = CGRectIntersection(extent, CGRectUnion(CGRectOffset(R, offset, 0.0), CGRectOffset(R, -offset, 0.0)));
+        R = CGRectIntersection(extent, CGRectUnion(CGRectOffset(R, [offset floatValue], 0.0), CGRectOffset(R, -offset, 0.0)));
     }
     return R;
 }
@@ -78,8 +76,7 @@ static CIKernel *_SKPTUncoverTransitionFilterKernel = nil;
     NSNumber *offset = [NSNumber numberWithFloat:[inputExtent Z] * [inputTime floatValue]];
     NSArray *extent = [NSArray arrayWithObjects:[NSNumber numberWithFloat:[inputExtent X]], [NSNumber numberWithFloat:[inputExtent Y]], [NSNumber numberWithFloat:[inputExtent Z]], [NSNumber numberWithFloat:[inputExtent W]], nil];
     NSArray *arguments = [NSArray arrayWithObjects:src, trgt, inputExtent, inputAngle, inputTime, nil];
-    NSArray *userInfo = [NSArray arrayWithObjects:src, offset, nil];
-    NSDictionary *options  = [NSDictionary dictionaryWithObjectsAndKeys:extent, kCIApplyOptionDefinition, extent, kCIApplyOptionExtent, userInfo, kCIApplyOptionUserInfo, nil];
+    NSDictionary *options  = [NSDictionary dictionaryWithObjectsAndKeys:extent, kCIApplyOptionDefinition, extent, kCIApplyOptionExtent, offset, kCIApplyOptionUserInfo, nil];
     
     [_SKPTUncoverTransitionFilterKernel setROISelector:@selector(regionOf:destRect:userInfo:)];
     
