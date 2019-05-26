@@ -63,7 +63,7 @@ static CIKernel *_SKPTUncoverTransitionFilterKernel = nil;
 
 - (CGRect)regionOf:(int)sampler destRect:(CGRect)R userInfo:(NSNumber *)offset {
     if (sampler == 0) {
-        R = CGRectIntersection(extent, CGRectUnion(CGRectOffset(R, [offset floatValue], 0.0), CGRectOffset(R, -offset, 0.0)));
+        R = CGRectUnion(CGRectOffset(R, [offset floatValue], 0.0), CGRectOffset(R, -offset, 0.0));
     }
     return R;
 }
