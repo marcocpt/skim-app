@@ -89,10 +89,13 @@ NSString *SKPasteboardTypeSkimNote = @"net.sourceforge.skim-app.pasteboard.skimn
 
 @implementation PDFAnnotation (SKExtensions)
 
+/// < 10.13
 - (PDFTextAnnotationIconType)fallback_iconType { return kPDFTextAnnotationIconNote; }
 
+/// < 10.13.2
 - (NSColor *)fallback_interiorColor { return nil; }
 
+/// < 10.13+
 - (NSString *)fallback_fieldName { return nil; }
 
 + (void)load {

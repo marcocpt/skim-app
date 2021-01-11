@@ -45,6 +45,7 @@
 @implementation NSColor (SKExtensions)
 
 + (void)load {
+    // f9c80e4  -> use separator color for gradient view edges when available
     SKAddClassMethodImplementationFromSelector(self, @selector(separatorColor), @selector(gridColor));
 }
 

@@ -76,6 +76,7 @@ NSString *SKPDFPageActionRotate = @"rotate";
 
 @implementation PDFPage (SKExtensions) 
 
+/// <= 10.12 使用的方法
 - (void)fallback_transformContext:(CGContextRef)context forBox:(PDFDisplayBox)box {
     NSRect bounds = [self boundsForBox:box];
     CGContextRotateCTM(context, -[self rotation] * M_PI_2 / 90.0);
@@ -88,6 +89,7 @@ NSString *SKPDFPageActionRotate = @"rotate";
 }
 
 + (void)load {
+    // <= 10.12 使用的方法
     SKAddInstanceMethodImplementationFromSelector(self, @selector(transformContext:forBox:), @selector(fallback_transformContext:forBox:));
 }
 

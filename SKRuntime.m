@@ -40,7 +40,6 @@
 #import <objc/objc-runtime.h>
 
 
-// this is essentially class_replaceMethod, but returns any inherited implementation, and can get the types from an inherited implementation
 IMP SKSetMethodImplementation(Class aClass, SEL aSelector, IMP anImp, const char *types, NSInteger options) {
     IMP imp = NULL;
     if (anImp) {

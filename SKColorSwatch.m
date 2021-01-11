@@ -976,6 +976,9 @@ NSString *SKColorSwatchOrWellWillActivateNotification = @"SKColorSwatchOrWellWil
 
 static void (*original_activate)(id, SEL, BOOL) = NULL;
 
+
+/// `- (void)activate:(BOOL)exclusive` 方法添加 SKColorSwatchOrWellWillActivateNotification 通知
+/// 在 DisplayPreferences.xib 中的 color well 点击时执行
 - (void)replacement_activate:(BOOL)exclusive {
     [[NSNotificationCenter defaultCenter] postNotificationName:SKColorSwatchOrWellWillActivateNotification object:self];
     original_activate(self, _cmd, exclusive);

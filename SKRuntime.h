@@ -41,13 +41,20 @@
 
 enum { SKAddOrReplace, SKReplaceOnly, SKAddOnly };
 
+/// this is essentially class_replaceMethod, but returns any inherited implementation, and can get the types from an inherited implementation
+/// @param options 是 SKReplaceOnly, 或 SKAddOnly
 extern IMP SKSetMethodImplementation(Class aClass, SEL aSelector, IMP anImp, const char *types, NSInteger options);
+
+/// 给类替换或添加（由 options 参数决定）实例或类方法·. 
+/// @param options 是 SKAddOrReplace，SKReplaceOnly, 或 SKAddOnly
 extern IMP SKSetMethodImplementationFromSelector(Class aClass, SEL aSelector, SEL impSelector, NSInteger options);
 
 extern IMP SKReplaceInstanceMethodImplementation(Class aClass, SEL aSelector, IMP anImp);
 extern void SKAddInstanceMethodImplementation(Class aClass, SEL aSelector, IMP anImp, const char *types);
 
+/// 替换实例方法的实现
 extern IMP SKReplaceInstanceMethodImplementationFromSelector(Class aClass, SEL aSelector, SEL impSelector);
+/// 添加实例方法的实现
 extern void SKAddInstanceMethodImplementationFromSelector(Class aClass, SEL aSelector, SEL impSelector);
 
 extern IMP SKReplaceClassMethodImplementation(Class aClass, SEL aSelector, IMP anImp);

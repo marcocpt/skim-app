@@ -43,6 +43,10 @@ extern NSString *SKColorSwatchColorsChangedNotification;
 @interface SKColorSwatch : NSControl <NSDraggingSource> {
     NSMutableArray *colors;
     NSInteger clickedIndex;
+    
+    /// Preferences - Display - Favorite colors 选择的颜色.\t
+    ///
+    /// -1 为 Background color: 或 Reading bar:
     NSInteger selectedIndex;
     NSInteger focusedIndex;
     NSInteger dropIndex;
@@ -66,6 +70,7 @@ extern NSString *SKColorSwatchColorsChangedNotification;
 @property (nonatomic) BOOL autoResizes;
 @property (nonatomic) BOOL selects;
 
+/// 关闭颜色选择面板时, 根据 selectedIndex 的值来执行
 - (void)deactivate;
 
 - (void)selectColorAtIndex:(NSInteger)idx;
