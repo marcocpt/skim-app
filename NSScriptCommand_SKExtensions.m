@@ -46,8 +46,9 @@ static id (*original_setReceiversSpecifier)(id, SEL, id) = NULL;
 static id (*original_setArguments)(id, SEL, id) = NULL;
 static id (*original_setDirectParameter)(id, SEL, id) = NULL;
 
-// Workaround for Cocoa Scripting and AppleScript bugs.
-// Cocoa Scripting does not accept range specifiers whose start/end specifier have an absolute container specifier, but AppleScript does not accept range specifiers with relative container specifiers, so we cannot return those from PDFSelection
+/// Workaround for Cocoa Scripting and AppleScript bugs.
+///
+/// Cocoa Scripting does not accept range specifiers whose start/end specifier have an absolute container specifier, but AppleScript does not accept range specifiers with relative container specifiers, so we cannot return those from PDFSelection
 static void fixRangeSpecifiers(id object) {
     if ([object isKindOfClass:[NSArray class]]) {
         for (id subobject in (NSArray *)object)
@@ -69,16 +70,19 @@ static void fixRangeSpecifiers(id object) {
     }
 }
 
+/// 修复脚本 bug。参见 fixRangeSpecifiers
 - (void)replacement_setReceiversSpecifier:(NSScriptObjectSpecifier *)receiversSpec {
     fixRangeSpecifiers(receiversSpec);
     original_setReceiversSpecifier(self, _cmd, receiversSpec);
 }
 
+/// 修复脚本 bug。参见 fixRangeSpecifiers
 - (void)replacement_setArguments:(NSDictionary *)args {
     fixRangeSpecifiers([args allValues]);
     original_setArguments(self, _cmd, args);
 }
 
+/// 修复脚本 bug。参见 fixRangeSpecifiers
 - (void)replacement_setDirectParameter:(id)directParameter {
     fixRangeSpecifiers(directParameter);
     original_setDirectParameter(self, _cmd, directParameter);

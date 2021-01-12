@@ -65,6 +65,7 @@ NSString *SKPDFAnnotationScriptingPointListsKey = @"scriptingPointLists";
 
 static void (*original_drawWithBox_inContext)(id, SEL, PDFDisplayBox, CGContextRef) = NULL;
 
+/// <= 10.12
 - (void)replacement_drawWithBox:(PDFDisplayBox)box inContext:(CGContextRef)context {
     if ([self hasAppearanceStream]) {
         original_drawWithBox_inContext(self, _cmd, box, context);

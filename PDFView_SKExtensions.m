@@ -96,7 +96,7 @@ static void (*original_goToFirstPage)(id, SEL, id) = NULL;
 static void (*original_goToLastPage)(id, SEL, id) = NULL;
 static void (*original_goToPage)(id, SEL, id) = NULL;
 
-// on Yosemite, the arrow up/down and page up/down keys in non-continuous mode switch pages the wrong way
+/// < 10.12 on Yosemite, the arrow up/down and page up/down keys in non-continuous mode switch pages the wrong way
 - (void)replacement_keyDown:(NSEvent *)theEvent {
     unichar eventChar = [theEvent firstCharacter];
     NSUInteger modifiers = [theEvent standardModifierFlags];
@@ -144,16 +144,18 @@ static void (*original_goToPage)(id, SEL, id) = NULL;
     }
 }
 
+
+/// = 10.12 On (High) Sierra note annotations don't draw at all
 - (void)replacement_drawPage:(PDFPage *)pdfPage toContext:(CGContextRef)context {
     original_drawPage_toContext(self, _cmd, pdfPage, context);
-    
-    // On (High) Sierra note annotations don't draw at all
+
     for (PDFAnnotation *annotation in [[[pdfPage annotations] copy] autorelease]) {
         if ([annotation shouldDisplay] && ([annotation isNote] || [[annotation type] isEqualToString:SKNTextString]))
             [annotation drawWithBox:[self displayBox] inContext:context];
     }
 }
 
+/// = 10.13
 - (void)replacement_goToRect:(NSRect)rect onPage:(PDFPage *)page {
     NSView *docView = [self documentView];
     if ([self isPageAtIndexDisplayed:[page pageIndex]] == NO)
@@ -161,6 +163,7 @@ static void (*original_goToPage)(id, SEL, id) = NULL;
     [docView scrollRectToVisible:[self convertRect:[self convertRect:rect fromPage:page] toView:docView]];
 }
 
+/// = 10.12
 - (void)replacement_setCurrentSelection:(PDFSelection *)currentSelection {
     original_setCurrentSelection(self, _cmd, currentSelection ?: [[[PDFSelection alloc] initWithDocument:[self document]] autorelease]);
 }
@@ -174,6 +177,7 @@ static inline BOOL hasHorizontalLayout(PDFView *pdfView) {
 
 #pragma clang diagnostic pop
 
+/// = 10.15
 - (void)replacement_goToPreviousPage:(id)sender {
     if (hasHorizontalLayout(self) && [self canGoToPreviousPage]) {
         PDFDocument *doc = [self document];
@@ -184,6 +188,7 @@ static inline BOOL hasHorizontalLayout(PDFView *pdfView) {
     }
 }
 
+/// = 10.15
 - (void)replacement_goToNextPage:(id)sender {
     if (hasHorizontalLayout(self) && [self canGoToNextPage]) {
         PDFDocument *doc = [self document];
@@ -194,6 +199,7 @@ static inline BOOL hasHorizontalLayout(PDFView *pdfView) {
     }
 }
 
+/// = 10.15
 - (void)replacement_goToFirstPage:(id)sender {
     if (hasHorizontalLayout(self) && [self canGoToFirstPage]) {
         PDFDocument *doc = [self document];
@@ -204,6 +210,7 @@ static inline BOOL hasHorizontalLayout(PDFView *pdfView) {
     }
 }
 
+/// = 10.15
 - (void)replacement_goToLastPage:(id)sender {
     if (hasHorizontalLayout(self) && [self canGoToLastPage]) {
         PDFDocument *doc = [self document];
@@ -214,6 +221,7 @@ static inline BOOL hasHorizontalLayout(PDFView *pdfView) {
     }
 }
 
+/// = 10.15
 - (void)replacement_goToPage:(PDFPage *)page {
     if (hasHorizontalLayout(self)) {
         NSRect bounds = [page boundsForBox:[self displayBox]];

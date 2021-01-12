@@ -47,11 +47,13 @@
 
 static id (*original_toolTip)(id, SEL) = NULL;
 
+/// <= 10.12
 - (NSString *)replacement_toolTip {
     return ([self destination] || original_toolTip == NULL) ? @"" : original_toolTip(self, _cmd);
 }
 
 + (void)load {
+    // <= 10.12
     original_toolTip = (id (*)(id, SEL))SKReplaceInstanceMethodImplementationFromSelector(self, @selector(toolTip), @selector(replacement_toolTip));
 }
 
