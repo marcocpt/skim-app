@@ -74,6 +74,7 @@ enum {
 
 @interface NSColor (SKExtensions)
 
+/// 监听系统 NSSystemColorsDidChangeNotification 的改变来设置颜色
 + (void)makeHighlightColors;
 
 + (NSColor *)keySourceListHighlightColor;

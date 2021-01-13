@@ -51,9 +51,13 @@
 
 #pragma mark Note Highlight Colors
 
+/// app 为激活状态时, 选择文本高亮的颜色
 static NSColor *activeSelectionHighlightColor = nil;
+/// app 为非激活状态时, 选择文本高亮的颜色
 static NSColor *inactiveSelectionHighlightColor = nil;
+/// app 为激活状态时, 选择添加的注释的边框颜色
 static NSColor *activeSelectionHighlightInteriorColor = nil;
+/// app 为激活状态时, 选择添加的注释的边框颜色
 static NSColor *inactiveSelectionHighlightInteriorColor = nil;
 
 + (void)handleSystemColorsDidChange:(NSNotification *)notification {

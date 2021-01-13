@@ -74,7 +74,7 @@ main
 		 __tg_floor(double)
 		 -[NSApplication(SKScriptMenu) scriptMenu]
 			 +[SKScriptMenuController sharedController]
-				 -[SKScriptMenuController init] // TODO:
+				 -[SKScriptMenuController init] 
 					 -[NSFileManager(SKExtensions) applicationSupportDirectoryURLs]
 			 -[SKScriptMenuController scriptMenu]
 	 -[SKApplication delegate]
@@ -185,7 +185,7 @@ main
 				 __tg_floor(double)
 				 SKRunWithLightAppearance
 					 __53+[NSColor(SKExtensions) handleSystemColorsDidChange:]_block_invoke
-		 +[NSValueTransformer(SKExtensions) registerCustomTransformers]
+		 +[NSValueTransformer(SKExtensions) registerCustomTransformers] // TODO:
 			 -[SKRadioTransformer initWithTargetValue:]
 	 -[SKApplicationController applicationDidFinishLaunching:]
 		 -[SKDocumentController openedFile]

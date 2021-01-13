@@ -51,6 +51,7 @@ NSString *SKPageBackgroundColorKey = @"SKPageBackgroundColor";
 NSString *SKLastOpenFileNamesKey = @"SKLastOpenFileNames";
 NSString *SKOpenContentsPaneOnlyForTOCKey = @"SKOpenContentsPaneOnlyForTOC";
 NSString *SKInitialWindowSizeOptionKey = @"SKInitialWindowSizeOption";
+/// "Preferences" - "General" - "Reopen last open files at startup" binding
 NSString *SKReopenLastOpenFilesKey = @"SKReopenLastOpenFiles";
 NSString *SKRememberLastPageViewedKey = @"SKRememberLastPageViewed";
 NSString *SKRememberSnapshotsKey = @"SKRememberSnapshots";

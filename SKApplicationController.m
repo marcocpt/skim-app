@@ -245,6 +245,7 @@ NSString *SKFavoriteColorListName = @"Skim Favorite Colors";
     [NSImage makeImages];
     [NSColor makeHighlightColors];
     [NSValueTransformer registerCustomTransformers];
+    // 设置 URL scheme. 参考: https://stackoverflow.com/questions/1991072/how-to-handle-with-a-default-url-scheme/1991162
     [[NSAppleEventManager sharedAppleEventManager] setEventHandler:self andSelector:@selector(handleGetURLEvent:withReplyEvent:) forEventClass:kInternetEventClass andEventID:kAEGetURL];
 }
 

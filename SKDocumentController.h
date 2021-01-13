@@ -82,6 +82,7 @@ extern NSString *SKDocumentControllerDocumentKey;
 
 - (Class)documentClassForContentsOfURL:(NSURL *)inAbsoluteURL;
 
+/// 是否已经打开了文件
 @property (nonatomic, readonly) BOOL openedFile;
 
 @end

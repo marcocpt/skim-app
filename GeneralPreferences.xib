@@ -1,9 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.Cocoa.XIB" version="3.0" toolsVersion="16097.3" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES">
+<document type="com.apple.InterfaceBuilder3.Cocoa.XIB" version="3.0" toolsVersion="16096" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES">
     <dependencies>
         <deployment identifier="macosx"/>
-        <development version="8000" identifier="xcode"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="16097.3"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="16096"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <objects>
@@ -278,7 +277,7 @@
                 <constraint firstItem="12" firstAttribute="leading" secondItem="2" secondAttribute="leading" id="x2g-Di-rcn"/>
                 <constraint firstItem="9" firstAttribute="firstBaseline" secondItem="7" secondAttribute="firstBaseline" id="xO9-QM-sbG"/>
             </constraints>
-            <point key="canvasLocation" x="139.5" y="154.5"/>
+            <point key="canvasLocation" x="139" y="154.5"/>
         </customView>
         <userDefaultsController representsSharedInstance="YES" id="58"/>
     </objects>

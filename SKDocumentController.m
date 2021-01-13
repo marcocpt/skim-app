@@ -402,7 +402,7 @@ static NSData *convertTIFFDataToPDF(NSData *tiffData)
             completionHandler(nil, NO, [NSError readFileErrorWithLocalizedDescription:NSLocalizedString(@"Unable to load file", @"Error description")]);
         }
         
-    } else {
+    } else { // type 为 SKBookmarkTypeBookmark 或 SKBookmarkTypeSeparator
         
         NSURL *fileURL = [bookmark fileURLToOpen];
         if (fileURL && [fileURL checkResourceIsReachableAndReturnError:NULL] && NO == [fileURL isTrashedFileURL]) {

@@ -51,6 +51,7 @@
 
 - (NSURL *)uniqueFileURL;
 
+/// file URL 指向的是回收站中的文件
 - (BOOL)isTrashedFileURL;
 
 - (BOOL)isSkimURL;
