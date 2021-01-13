@@ -119,6 +119,8 @@ NSString *SKFavoriteColorListName = @"Skim Favorite Colors";
 #endif
 
 @interface SKApplicationController (SKPrivate)
+
+/// This code finds the spotlight importer and re-runs it if the importer or app version has changed since the last time we launched.
 - (void)doSpotlightImportIfNeeded;
 - (void)handleGetURLEvent:(NSAppleEventDescriptor *)event withReplyEvent:(NSAppleEventDescriptor *)replyEvent;
 @end
@@ -424,7 +426,6 @@ NSString *SKFavoriteColorListName = @"Skim Favorite Colors";
 
 - (void)doSpotlightImportIfNeeded {
     
-    // This code finds the spotlight importer and re-runs it if the importer or app version has changed since the last time we launched.
     NSArray *pathComponents = [NSArray arrayWithObjects:[[NSBundle mainBundle] bundlePath], @"Contents", @"Library", @"Spotlight", @"SkimImporter", nil];
     NSString *importerPath = [[NSString pathWithComponents:pathComponents] stringByAppendingPathExtension:@"mdimporter"];
     
