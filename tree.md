@@ -74,7 +74,7 @@ main
 		 __tg_floor(double)
 		 -[NSApplication(SKScriptMenu) scriptMenu]
 			 +[SKScriptMenuController sharedController]
-				 -[SKScriptMenuController init]
+				 -[SKScriptMenuController init] // TODO:
 					 -[NSFileManager(SKExtensions) applicationSupportDirectoryURLs]
 			 -[SKScriptMenuController scriptMenu]
 	 -[SKApplication delegate]

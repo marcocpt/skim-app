@@ -131,10 +131,11 @@ NSString *SKFavoriteColorListName = @"Skim Favorite Colors";
 + (void)initialize{
     SKINITIALIZE;
     
-    // load the default values for the user defaults
+    // load the default values for the user defaults. 存储在 InitialUserDefaults.plist 文件中
     NSURL *initialUserDefaultsURL = [[NSBundle mainBundle] URLForResource:INITIAL_USER_DEFAULTS_FILENAME withExtension:@"plist"];
     NSDictionary *initialUserDefaultsDict = [NSDictionary dictionaryWithContentsOfURL:initialUserDefaultsURL];
     NSDictionary *initialValuesDict = [initialUserDefaultsDict objectForKey:REGISTERED_DEFAULTS_KEY];
+    /// 在设置面板中可复位为初始值的 keys
     NSArray *resettableUserDefaultsKeys;
     
     // set them in the standard user defaults
@@ -147,7 +148,7 @@ NSString *SKFavoriteColorListName = @"Skim Favorite Colors";
     // if your application supports resetting a subset of the defaults to 
     // factory values, you should set those values 
     // in the shared user defaults controller
-    
+    // 相当于 swift 中的 flatMap。@"@unionOfArrays.self" 为 Key Path， 参考：https://developer.apple.com/library/archive/documentation/Cocoa/Conceptual/KeyValueCoding/CollectionOperators.html
     resettableUserDefaultsKeys = [[[initialUserDefaultsDict objectForKey:RESETTABLE_KEYS_KEY] allValues] valueForKeyPath:@"@unionOfArrays.self"];
     initialValuesDict = [initialValuesDict dictionaryWithValuesForKeys:resettableUserDefaultsKeys];
     
@@ -168,6 +169,7 @@ NSString *SKFavoriteColorListName = @"Skim Favorite Colors";
     
     NSMenu *menu = [[[NSApp mainMenu] itemAtIndex:VIEW_MENU_INDEX] submenu];
     for (NSMenuItem *menuItem in [menu itemArray]) {
+        // "Thumbnails" 和 "Table Of Contents"；"Notes"和"Snapshots" 菜单缩进
         if ([menuItem action] == @selector(changeLeftSidePaneState:) || [menuItem action] == @selector(changeRightSidePaneState:))
             [menuItem setIndentationLevel:1];
     }
