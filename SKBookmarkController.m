@@ -87,6 +87,7 @@
 
 static char SKBookmarkPropertiesObservationContext;
 
+/// 书签数据保存在此域的 NSUserDefaults 中
 static NSString *SKBookmarksIdentifier = nil;
 
 static NSArray *minimumCoverForBookmarks(NSArray *items);
@@ -110,6 +111,7 @@ static NSArray *minimumCoverForBookmarks(NSArray *items);
 
 static SKBookmarkController *sharedBookmarkController = nil;
 
+/// 记录最大的最近的文档数. 不是 "Open Recent" 中的
 static NSUInteger maxRecentDocumentsCount = 0;
 
 + (void)initialize {

@@ -67,6 +67,7 @@ extern NSString *SKDocumentControllerDocumentKey;
 @class SKBookmark;
 
 @interface SKDocumentController : NSDocumentController {
+    /// 用来指示是否已经打开了问
     BOOL openedFile;
 }
 

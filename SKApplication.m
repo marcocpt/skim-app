@@ -93,6 +93,7 @@ NSString *SKDarkModeChangedNotification = @"SKDarkModeChangedNotification";
     return NSLeftMouseDragged == [[self nextEventMatchingMask:(NSLeftMouseUpMask | NSLeftMouseDraggedMask) untilDate:[NSDate distantFuture] inMode:NSEventTrackingRunLoopMode dequeue:NO] type];
 }
 
+/// 转换为 SKApplicationDelegate 类型
 - (id <SKApplicationDelegate>)delegate { return (id <SKApplicationDelegate>)[super delegate]; }
 - (void)setDelegate:(id <SKApplicationDelegate>)newDelegate { [super setDelegate:newDelegate]; }
 

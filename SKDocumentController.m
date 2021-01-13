@@ -645,7 +645,8 @@ static inline NSDictionary *optionsFromFragmentAndEvent(NSString *fragment) {
     }
 }
 
-// By not responding to newWindowForTab: no "+" button is shown in the tab bar
+/// >= 10.12 才有 `newWindowForTab(:)` 方法
+/// By not responding to newWindowForTab: no "+" button is shown in the tab bar
 - (BOOL)respondsToSelector:(SEL)aSelector {
     return aSelector != @selector(newWindowForTab:) && [super respondsToSelector:aSelector];
 }

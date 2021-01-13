@@ -44,6 +44,11 @@
 
 @class SKBookmark, SKStatusBar;
 
+/// 书签控制器. 可以保存当前 pdf 的显示状态和页码
+///
+/// 为单例类, 全局共享一个 sharedBookmarkController
+///
+/// 123
 @interface SKBookmarkController : SKWindowController <NSWindowDelegate, NSToolbarDelegate, NSMenuDelegate, SKOutlineViewDelegate, NSOutlineViewDataSource, QLPreviewPanelDataSource, QLPreviewPanelDelegate, NSTouchBarDelegate> {
     SKOutlineView *outlineView;
     SKStatusBar *statusBar;
