@@ -279,6 +279,7 @@ NSString *SKFavoriteColorListName = @"Skim Favorite Colors";
     currentDocumentsTimer = [[NSTimer scheduledTimerWithTimeInterval:CURRENTDOCUMENTSETUP_INTERVAL target:self selector:@selector(registerCurrentDocuments:) userInfo:nil repeats:YES] retain];
     
     if (RUNNING_AFTER(10_13))
+        // 监测系统修改 Appearance (System Preferences - General - Appearance)
         [NSApp addObserver:self forKeyPath:@"effectiveAppearance" options:0 context:&SKApplicationObservationContext];
     
     // kHIDRemoteModeExclusiveAuto lets the HIDRemote handle activation when the app gets or loses focus

@@ -185,7 +185,7 @@ main
 				 __tg_floor(double)
 				 SKRunWithLightAppearance
 					 __53+[NSColor(SKExtensions) handleSystemColorsDidChange:]_block_invoke
-		 +[NSValueTransformer(SKExtensions) registerCustomTransformers] // TODO:
+		 +[NSValueTransformer(SKExtensions) registerCustomTransformers] // TODO: 1
 			 -[SKRadioTransformer initWithTargetValue:]
 	 -[SKApplicationController applicationDidFinishLaunching:]
 		 -[SKDocumentController openedFile]
@@ -196,9 +196,9 @@ main
 				 -[SKVersionNumber componentCount]
 				 -[SKVersionNumber componentAtIndex:]
 			 -[SKVersionNumber dealloc]
-		 -[SKApplicationController doSpotlightImportIfNeeded]
+		 -[SKApplicationController doSpotlightImportIfNeeded] // TODO: 1
 		 __tg_floor(double)
-		 +[HIDRemote sharedHIDRemote]
+		 +[HIDRemote sharedHIDRemote] // TODO: 0
 			 -[HIDRemote init]
 		 -[HIDRemote startRemoteControl:]
 			 -[HIDRemote _updateSessionInformation]
@@ -210,7 +210,7 @@ main
 				 -[HIDRemote activeRemoteControlCount]
 		 -[HIDRemote setDelegate:]
 		 -[SKApplicationController application:delegateHandlesKey:]
-		 +[SKColorList favoriteColorList]
+		 +[SKColorList favoriteColorList] // TODO: 0
 			 -[SKColorList setEditable:]
 			 +[NSColor(SKExtensions) favoriteColors]
 				 +[NSValueTransformer(SKExtensions) arrayTransformerWithValueTransformerForName:]

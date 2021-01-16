@@ -126,6 +126,7 @@ NSString *SKDocumentControllerDocumentKey = @"document";
     [super beginOpenPanel:openPanel forTypes:inTypes completionHandler:completionHandler];
 }
 
+/// 判断 data 是否为 PDF 文件. PDF 文件的前 5 个字节为 "%PDF-"
 static BOOL isPDFData(NSData *data) {
     static NSData *pdfHeaderData = nil;
     if (nil == pdfHeaderData) {
@@ -135,6 +136,7 @@ static BOOL isPDFData(NSData *data) {
     return ([data length] >= 5 && NSNotFound != [data rangeOfData:pdfHeaderData options:NSDataSearchAnchored range:NSMakeRange(0, 5)].location);
 }
 
+/// 判断 data 是否为 PostScript 文件. PSS 文件的前 5 个字节为 "%!PS-"
 static BOOL isPostScriptData(NSData *data) {
     static NSData *psHeaderData = nil;
     if (nil == psHeaderData) {
@@ -144,6 +146,7 @@ static BOOL isPostScriptData(NSData *data) {
     return ([data length] >= 5 && NSNotFound != [data rangeOfData:psHeaderData options:NSDataSearchAnchored range:NSMakeRange(0, 5)].location);
 }
 
+/// 判断 data 是否为 EncapsulatedPostScript 文件. 文件的前 5 个字节为 " EPSF-"
 static BOOL isEncapsulatedPostScriptData(NSData *data) {
     static NSData *epsHeaderData = nil;
     if (nil == epsHeaderData) {
@@ -637,7 +640,7 @@ static inline NSDictionary *optionsFromFragmentAndEvent(NSString *fragment) {
             absoluteURL = [absoluteURL filePathURL];
         
         [super openDocumentWithContentsOfURL:absoluteURL display:displayDocument completionHandler:^(NSDocument *document, BOOL documentWasAlreadyOpen, NSError * error){
-            if (document && options)
+                         if (document && options)
                 [document applyOptions:options];
             if (completionHandler)
                 completionHandler(document, documentWasAlreadyOpen, error);

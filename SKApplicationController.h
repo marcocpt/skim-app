@@ -45,6 +45,7 @@
 @interface SKApplicationController : NSObject <SKApplicationDelegate, HIDRemoteDelegate, NSMenuDelegate> {
     NSMenu *noteColumnsMenu;
     NSMenu *noteTypeMenu;
+    /// 定时 CURRENTDOCUMENTSETUP_INTERVAL 秒执行 `registerCurrentDocuments:` 方法来保存 SKLastOpenFileNamesKey
     NSTimer *currentDocumentsTimer;
     BOOL didCheckReopen;
     BOOL remoteScrolling;
