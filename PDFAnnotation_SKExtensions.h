@@ -113,7 +113,7 @@ extern NSString *SKPasteboardTypeSkimNote;
 - (void)autoUpdateString;
 
 - (NSString *)uniqueID;
-
+/// 修改注释的颜色
 - (void)setColor:(NSColor *)color alternate:(BOOL)alternate updateDefaults:(BOOL)update;
 
 - (NSURL *)skimURL;

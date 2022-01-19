@@ -62,6 +62,7 @@ extern NSString *SKThumbnailSizeKey;
 extern NSString *SKLastToolModeKey;
 extern NSString *SKLastAnnotationModeKey;
 extern NSString *SKLastSecondarySelectsTextKey;
+/// 抗: 设置 - Display - PDFDisplay - Anti-alias text
 extern NSString *SKShouldAntiAliasKey;
 extern NSString *SKInterpolationQualityKey;
 extern NSString *SKGreekingThresholdKey;

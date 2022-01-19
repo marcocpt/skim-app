@@ -40,6 +40,7 @@
 
 @class SKMainWindowController, SKPDFView, SKColorSwatch, SKShareMenuController;
 
+///  工具栏控制器
 @interface SKMainToolbarController : NSViewController <NSToolbarDelegate> {
     SKMainWindowController *mainController;
     NSSegmentedControl *backForwardButton;
@@ -132,8 +133,10 @@
 - (void)createNewTextNote:(id)sender;
 - (void)createNewCircleNote:(id)sender;
 - (void)createNewMarkupNote:(id)sender;
+/// 工具栏 Add Node - Add New Highlight : 创建高亮笔记
 - (IBAction)createNewNote:(id)sender;
 - (IBAction)changeToolMode:(id)sender;
+/// 工具栏 Favorite Colors: 修改注释的颜色
 - (IBAction)selectColor:(id)sender;
 - (IBAction)togglePacer:(id)sender;
 - (IBAction)choosePacerSpeed:(id)sender;

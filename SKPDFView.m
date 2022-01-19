@@ -1729,7 +1729,7 @@ typedef NS_ENUM(NSInteger, PDFDisplayDirection) {
             [super mouseDown:theEvent];
         else
             [self doDragWithEvent:theEvent];	
-    } else if (toolMode == SKSelectToolMode) {
+    } else if (toolMode == SKSelectToolMode) { // 矩形图片选择模式: Select Tool
         [self setCurrentSelection:nil];                
         [self doSelectWithEvent:theEvent];
     } else if (toolMode == SKMagnifyToolMode) {
@@ -1737,7 +1737,7 @@ typedef NS_ENUM(NSInteger, PDFDisplayDirection) {
         [self doMagnifyWithEvent:theEvent];
     } else if (pdfvFlags.hideNotes == NO && [[self document] allowsNotes] && IS_TABLET_EVENT(theEvent, NSEraserPointingDevice)) {
         [self doEraseAnnotationsWithEvent:theEvent];
-    } else if ([self doSelectAnnotationWithEvent:theEvent]) {
+    } else if ([self doSelectAnnotationWithEvent:theEvent]) { //
         if ([activeAnnotation isLink]) {
             [self doClickLinkWithEvent:theEvent];
         } else if ([theEvent clickCount] == 1 && [activeAnnotation isText] && activeAnnotation == wasActiveAnnotation && [NSApp willDragMouse] == NO) {
@@ -4229,6 +4229,7 @@ static inline CGFloat secondaryOutset(CGFloat x) {
     }
 }
 
+/// 矩形图片选择模式: Select Tool
 - (void)doSelectWithEvent:(NSEvent *)theEvent {
     NSPoint initialPoint = NSZeroPoint;
     PDFPage *page = [self pageAndPoint:&initialPoint forEvent:theEvent nearest:NO];
